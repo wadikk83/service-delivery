@@ -1,11 +1,8 @@
 package by.wadikk.servicedelivery.service.impl;
 
 import by.wadikk.servicedelivery.service.ShopService;
-import by.wadikk.servicedelivery.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ShopServiceImplTest {
 

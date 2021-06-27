@@ -10,10 +10,11 @@ public interface CategoryService {
 
     List<Category> getAllCategories();
 
-    Category getCategoryByName(Category root, String name);
+    Category getCategoryByName(String name);
 
-    void printTree(List<Category> categoryList);
+    void printTree();
 
-    void traverse1(Category category);
+    Category addNewCategory(String nameCategory, String parent);
 
+    Category addNewCategory(String nameCategory);
 }

@@ -1,10 +1,11 @@
-package by.wadikk.servicedelivery.service;
+package by.wadikk.servicedelivery.todelete;
 
 import by.wadikk.servicedelivery.model.User;
+import by.wadikk.servicedelivery.repository.UserRepository;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserServiceOld {
 
     List<User> getAllUsers();
 

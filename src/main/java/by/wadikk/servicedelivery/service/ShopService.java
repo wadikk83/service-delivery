@@ -2,7 +2,6 @@ package by.wadikk.servicedelivery.service;
 
 import by.wadikk.servicedelivery.model.Product;
 import by.wadikk.servicedelivery.model.Shop;
-import by.wadikk.servicedelivery.model.User;
 
 import java.util.List;
 
@@ -18,8 +17,9 @@ public interface ShopService {
 
     Shop editShopById(Integer id, String name, String description);
 
-    Boolean editProductPrice(Integer id, Product product, Integer price);
+    Boolean editProductPriceAndAmountByShopId(Integer id, Product product, Integer amount, Integer price);
 
-    Boolean editProductAmount(Integer id, Product product, Integer amount);
+    Boolean createShop(String name, String description);
+
 
 }

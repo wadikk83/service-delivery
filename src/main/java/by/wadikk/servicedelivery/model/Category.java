@@ -1,39 +1,44 @@
 package by.wadikk.servicedelivery.model;
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+@Slf4j
+@Data
 public class Category {
-    //Integer id;
+    Integer id;
 
     private List<Category> childrenList;
     private Category parent;
     private String name;
     private int depth;// глубина
 
-    public Category(String name) {
+    public Category(Integer id, String name) {
+        this.id = id;
         this.childrenList = new ArrayList<>();
         this.parent = null;
         this.name = name;
         this.depth = 0; // 0 is the base level (only the root should be on there)
+        log.info("Create root category with name -> " + name);
     }
 
-    public Category(String name, Category parent) {
-        // TODO: 27.06.2021 Add null pointer exception from parent
+    public Category(Integer id, String name, Category parent) {
         // new node with a given parent
-        this.childrenList = new ArrayList<>();
-        this.name = name;
-        this.parent = parent;
-        this.depth = (parent.getDepth() + 1);
-        parent.addChild(this);
-    }
-
-    public int getDepth() {
-        return this.depth;
-    }
-
-    public void setDepth(int depth) {
-        this.depth = depth;
+        if (parent != null) {
+            this.id = id;
+            this.childrenList = new ArrayList<>();
+            this.name = name;
+            this.parent = parent;
+            this.depth = (parent.getDepth() + 1);
+            parent.addChild(this);
+            log.info("Create new category with name -> " + name + " , parent -> " + parent.getName());
+        } else {
+            log.info("Attempt to create new category with null parent -> " + name);
+        }
     }
 
     public List<Category> getChildren() {
@@ -50,21 +55,13 @@ public class Category {
         return this.parent;
     }
 
-    public void addChild(String name) {
+    /*public void addChild(String name) {
         Category child = new Category(name);
         this.childrenList.add(child);
-    }
+    }*/
 
     public void addChild(Category child) {
         this.childrenList.add(child);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public boolean isRootNode() {
@@ -92,4 +89,9 @@ public class Category {
         return out;
     }
 
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, depth);
+    }
 }

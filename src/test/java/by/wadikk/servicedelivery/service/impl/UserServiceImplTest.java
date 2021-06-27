@@ -1,13 +1,14 @@
 package by.wadikk.servicedelivery.service.impl;
 
 
-import by.wadikk.servicedelivery.service.UserService;
+import by.wadikk.servicedelivery.todelete.UserServiceImplOld;
+import by.wadikk.servicedelivery.todelete.UserServiceOld;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
 class UserServiceImplTest {
-    UserService userService = UserServiceImpl.getService();
+    UserServiceOld userService = UserServiceImplOld.getService();
 
     @Test
     void getByLogin() {

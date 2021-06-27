@@ -1,31 +1,20 @@
 package by.wadikk.servicedelivery.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class OrderItem {
+
     private Product product;
     private int amount;
+    private Shop shop;
 
-   /* public int getItemPrice() {
-        return products.getPrice() * amount;
+
+    public int getItemPrice() {
+        return shop.getAmountAndPrice().get(product).getPrice() * amount;
     }
 
-    public OrderItem(Product goods, int amount) {
-        this.goods = goods;
-        this.amount = amount;
-    }
 
-    public Goods getGoods() {
-        return goods;
-    }
-
-    public void setGoods(Goods goods) {
-        this.goods = goods;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }*/
 }
