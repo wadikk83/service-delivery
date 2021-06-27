@@ -19,6 +19,7 @@ public class Category {
     }
 
     public Category(String name, Category parent) {
+        // TODO: 27.06.2021 Add null pointer exception from parent
         // new node with a given parent
         this.childrenList = new ArrayList<>();
         this.name = name;
@@ -91,13 +92,4 @@ public class Category {
         return out;
     }
 
-    /*static void traverse(TreeNode obj) {
-        if (obj != null) {
-            for (int i = 0; i < obj.childCount; i++) {
-                System.out.println(obj.childrens[i].value);
-                traverse(obj.childrens[i]);
-            }
-        }
-        return;
-    }*/
 }

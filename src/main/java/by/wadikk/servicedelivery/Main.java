@@ -17,7 +17,6 @@ import java.util.List;
 @Slf4j
 public class Main {
 
-    public List<User> userList = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         log.info("Application is started at " +

@@ -11,8 +11,7 @@ public class Product {
     private Integer id;
     private String name;
 
-    private String description1;
-    private String description2;
+    private Set<String> description;
 
     private Set<Category> categories;
 

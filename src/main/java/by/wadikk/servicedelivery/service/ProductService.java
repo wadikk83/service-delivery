@@ -13,9 +13,9 @@ public interface ProductService {
 
     Boolean deleteProduct(Integer id);
 
-    Product editProductById(Integer id, String name, String description1, String description2);
+    Product editProductById(Integer id, String name, String ...description);
 
-    Integer findProductByDescription(String... description);
+    List<Product> findProductByDescription(String ...description);
 
 
 }
