@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService {
 
-    private CategoryRepository categoryRepository = new CategoryRepositoryImpl();
+    private CategoryRepository categoryRepository = new CategoryRepositoryImpl().getService();
 
     @Override
     public Category getRootCategory() {

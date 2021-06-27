@@ -25,6 +25,6 @@ public class User {
         return "User ID->" + id +
                 ", login->" + login +
                 ", password->" + password +
-                ", firstName->" + firstName;
+                ", firstName->" + firstName + "\n";
     }
 }

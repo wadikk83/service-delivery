@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository = new UserRepositoryImpl();
+    private UserRepository userRepository = new UserRepositoryImpl().getService();
 
     @Override
     public List<User> getAllUsers() {
@@ -28,12 +28,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User editUserById(Integer id, String password, String firstName) {
-        return null;
+        User user = userRepository.findById(id);
+        user.setPassword(password);
+        user.setFirstName(firstName);
+        return userRepository.updateUser(user);
     }
 
     @Override
     public User editUserByLogin(String login, String password, String firstName) {
-        return null;
+        User user = userRepository.findByLogin(login);
+        user.setPassword(password);
+        user.setFirstName(firstName);
+        return userRepository.updateUser(user);
     }
 
     @Override

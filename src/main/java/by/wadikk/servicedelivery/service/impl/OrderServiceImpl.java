@@ -1,52 +1,37 @@
 package by.wadikk.servicedelivery.service.impl;
 
-import by.wadikk.servicedelivery.model.Order;
-import by.wadikk.servicedelivery.model.OrderItem;
-import by.wadikk.servicedelivery.model.User;
+import by.wadikk.servicedelivery.model.*;
+import by.wadikk.servicedelivery.repository.OrderRepository;
+import by.wadikk.servicedelivery.repository.impl.OrderRepositoryImpl;
 import by.wadikk.servicedelivery.service.OrderService;
-import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 public class OrderServiceImpl implements OrderService {
 
-    private static OrderService orderService;
-
-    private List<Order> orders = new ArrayList<Order>();
-
-    private static Integer idCount = 1;
-
-    public OrderServiceImpl() {
-    }
-
-    //singleton
-    public static OrderService getService() {
-        if (orderService == null) {
-            orderService = new OrderServiceImpl();
-        }
-        return orderService;
-    }
+    private OrderRepository orderRepository = new OrderRepositoryImpl().getService();
 
     @Override
     public List<Order> getAllOrders() {
-        return orders;
+        return orderRepository.getAll();
     }
 
     @Override
     public Order getById(Integer id) {
-
-        return orders.stream()
-                .filter(u -> u.getId().equals(id))
-                .findAny()
-                .orElse(null);
+        return orderRepository.findById(id);
     }
 
     @Override
-    public Boolean createOrder(User user, List<OrderItem> listItems) {
+    public Order createOrder(User user, List<OrderItem> listItems) {
+        Order order = new Order(user, listItems);
+        return orderRepository.addOrder(order);
+    }
 
-        orders.add(new Order(idCount++, user, listItems));
-        return true;
+    @Override
+    public Order addProductToOrderById(Integer id, Shop shop, Product product, Integer amount) {
+        Order ord = orderRepository.findById(id);
+        OrderItem orderItem = new OrderItem(product, amount, shop);
+        ord.getItems().add(orderItem);
+        return ord;
     }
 }

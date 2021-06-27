@@ -1,12 +1,13 @@
 package by.wadikk.servicedelivery.service.impl;
 
 import by.wadikk.servicedelivery.service.ShopService;
+import by.wadikk.servicedelivery.todelete.ShopServiceImplOld;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ShopServiceImplTest {
 
-    ShopService shopService = ShopServiceImpl.getService();
+    ShopService shopService = ShopServiceImplOld.getService();
 
     @Test
     void getByName() {

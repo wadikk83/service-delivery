@@ -41,6 +41,7 @@ public class JsonUtil {
             objectMapper.writeValue(new File(filepath), list);
 
             log.info("Parse collection to Json to file " + filepath);
+            System.out.println("Parse collection to Json to file " + filepath);
 
         } catch (Exception e) {
             log.error("Json writer error !!!!");

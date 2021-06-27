@@ -19,7 +19,9 @@ public interface ShopService {
 
     Boolean editProductPriceAndAmountByShopId(Integer id, Product product, Integer amount, Integer price);
 
-    Boolean createShop(String name, String description);
+    Shop createShop(String name, String description);
+
+    Shop sortedProductByPrice(Integer id);
 
 
 }

@@ -14,7 +14,7 @@ import java.util.Set;
 @Slf4j
 public class ProductServiceImpl implements ProductService {
 
-    private ProductRepository productRepository = new ProductRepositoryImpl();
+    private ProductRepository productRepository = new ProductRepositoryImpl().getService();
 
     @Override
     public List<Product> getAllProduct() {

@@ -15,15 +15,26 @@ public class Shop {
     String name;
     String description;
 
-    /*Map<Product, Integer> productPrice = new HashMap<>();
-
-    Map<Product, Integer> productAmount = new HashMap<>();*/
-
     Map<Product, WrapperForAmountPrice> amountAndPrice = new HashMap<>();
 
-    public Shop(Integer id, String name, String description) {
+    public Shop(String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        String out = "Shop ID->" + id +
+                ", name->" + name +
+                ", description->" + description + "\n";
+
+        for (Product key : amountAndPrice.keySet()) {
+            out += "Product ->" + key.getName() +
+                    " Amount -> " + amountAndPrice.get(key).getAmount() +
+                    " Price -> " + amountAndPrice.get(key).getPrice() + "\n";
+
+        }
+        return out;
     }
 }
