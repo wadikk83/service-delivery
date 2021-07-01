@@ -1,6 +1,8 @@
 package by.wadikk.servicedelivery.repository.impl;
 
+import by.wadikk.servicedelivery.model.Category;
 import by.wadikk.servicedelivery.model.User;
+import by.wadikk.servicedelivery.repository.CategoryRepository;
 import by.wadikk.servicedelivery.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public class UserRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl1  {
 
     private static UserRepository userRepository;
 
@@ -16,44 +18,44 @@ public class UserRepositoryImpl implements UserRepository {
 
     private static Integer idCount = 1;
 
-    public UserRepositoryImpl() {
-    }
+    /*public UserRepositoryImpl1() {
+    }*/
 
     //singleton
     public static UserRepository getService() {
         if (userRepository == null) {
-            userRepository = new UserRepositoryImpl();
+            //userRepository = new UserRepositoryImpl1();
         }
         return userRepository;
     }
 
 
-    @Override
     public User findById(Integer id) {
+
         return users.stream()
                 .filter(u -> u.getId().equals(id))
                 .findAny()
                 .orElse(null);
     }
 
-    @Override
-    public User findByName(String name) {
+
+    public User findByLogin(String loginName) {
         return users.stream()
-                .filter(u -> u.getLogin().equals(name))
+                .filter(u -> u.getLogin().equals(loginName))
                 .findAny()
                 .orElse(null);
     }
 
-    @Override
-    public User add(User user) {
+
+    public User addUser(User user) {
         user.setId(idCount++);
         users.add(user);
         log.info("Add new user ->" + user);
         return user;
     }
 
-    @Override
-    public User update(User user) {
+
+    public User updateUser(User user) {
         for (User u : users) {
             if (u.getId().equals(user.getId()) || u.getLogin().equals(user.getLogin())) {
                 u.setPassword(user.getPassword());
@@ -66,7 +68,7 @@ public class UserRepositoryImpl implements UserRepository {
         return null;
     }
 
-    @Override
+
     public Boolean deleteById(Integer id) {
         User toBeDeleted = findById(id);
         if (toBeDeleted != null) {
@@ -78,8 +80,9 @@ public class UserRepositoryImpl implements UserRepository {
         return false;
     }
 
-    @Override
+
     public List<User> getAll() {
         return users;
     }
+
 }

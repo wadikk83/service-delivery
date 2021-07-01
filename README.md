@@ -5,7 +5,7 @@
 
 mvn clean install
 Пример запуска программы:
-java -jar service-delivery-1.0-SNAPSHOT-jar-with-dependencies.jar -f 
+java -jar service-delivery-1.0-SNAPSHOT-jar-with-dependencies.jar 
 
 
 Тестовое задание Java

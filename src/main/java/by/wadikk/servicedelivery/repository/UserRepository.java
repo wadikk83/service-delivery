@@ -4,9 +4,9 @@ import by.wadikk.servicedelivery.model.User;
 
 import java.util.*;
 
-public interface UserRepository {
+public interface UserRepository extends GeneralRepository<User, Integer>{
 
-    User findById(Integer id);
+    /*User findById(Integer id);
 
     User findByLogin(String loginName);
 
@@ -16,5 +16,5 @@ public interface UserRepository {
 
     Boolean deleteById(Integer id);
 
-    List<User> getAll();
+    List<User> getAll();*/
 }

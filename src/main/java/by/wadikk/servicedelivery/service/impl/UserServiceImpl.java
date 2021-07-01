@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByLogin(String login) {
-        return userRepository.findByLogin(login);
+        return userRepository.findByName(login);
     }
 
     @Override
@@ -31,20 +31,20 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id);
         user.setPassword(password);
         user.setFirstName(firstName);
-        return userRepository.updateUser(user);
+        return userRepository.update(user);
     }
 
     @Override
     public User editUserByLogin(String login, String password, String firstName) {
-        User user = userRepository.findByLogin(login);
+        User user = userRepository.findByName(login);
         user.setPassword(password);
         user.setFirstName(firstName);
-        return userRepository.updateUser(user);
+        return userRepository.update(user);
     }
 
     @Override
     public User addNewUser(String login, String password, String firstName) {
         User user = new User(login, password, firstName);
-        return userRepository.addUser(user);
+        return userRepository.add(user);
     }
 }
