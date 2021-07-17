@@ -56,7 +56,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product updateProduct(Product product) {
-        for (Product pr : products) {
+        // TODO: 17.07.2021 Rewrite this method 
+        /*for (Product pr : products) {
             if (pr.getId().equals(product.getId()) || pr.getName().equals(product.getName())) {
                 pr.setDescription(product.getDescription());
                 pr.setCategories(product.getCategories());
@@ -64,7 +65,7 @@ public class ProductRepositoryImpl implements ProductRepository {
                 return pr;
             }
         }
-        log.info("Can't update product with id -> " + product.getId() + " and name->" + product.getName());
+        log.info("Can't update product with id -> " + product.getId() + " and name->" + product.getName());*/
         return null;
     }
 

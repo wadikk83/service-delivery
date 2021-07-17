@@ -65,12 +65,12 @@ public class Runner {
         System.out.println(orderService.getAllOrders());
         System.out.println("Add order");
         Order testOrder = orderService.createOrder(userService.getByLogin("admin"), new ArrayList<OrderItem>());
-        testOrder = orderService.addProductToOrderById(testOrder.getId(), shopService.getById(1),
+        /*testOrder = orderService.addProductToOrderById(testOrder.getId(), shopService.getById(1),
                 productService.getById(1), 10);
 
         testOrder = orderService.addProductToOrderById(testOrder.getId(), shopService.getById(1),
                 productService.getById(2), 20);
-        System.out.println(orderService.getAllOrders());
+        System.out.println(orderService.getAllOrders());*/
 
     }
 

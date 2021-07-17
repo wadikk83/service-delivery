@@ -55,7 +55,9 @@ public class ShopRepositoryImpl implements ShopRepository {
 
     @Override
     public Shop updateShop(Shop shop) {
-        for (Shop sh : shops) {
+
+        // TODO: 17.07.2021 Rewrite this method
+        /*for (Shop sh : shops) {
             if (sh.getId().equals(shop.getId()) || sh.getName().equals(shop.getName())) {
                 sh.setDescription(sh.getDescription());
                 sh.setAmountAndPrice(sh.getAmountAndPrice());
@@ -63,7 +65,7 @@ public class ShopRepositoryImpl implements ShopRepository {
                 return sh;
             }
         }
-        log.info("Can't update user with id -> " + shop.getId() + " and name->" + shop.getName());
+        log.info("Can't update user with id -> " + shop.getId() + " and name->" + shop.getName());*/
         return null;
     }
 

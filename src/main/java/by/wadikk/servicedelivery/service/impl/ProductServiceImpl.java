@@ -38,7 +38,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product editProductDescriptionById(Integer id, String name, String... description) {
-        if (id == null) {
+        // TODO: 17.07.2021 Rewrite this method
+
+        /*if (id == null) {
             log.info("Edit product: id is null");
             return null;
         }
@@ -53,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
             log.info("Product after edit " + toBeEdit);
             return productRepository.updateProduct(toBeEdit);
         }
-        log.info("Product with id " + id + " not found");
+        log.info("Product with id " + id + " not found");*/
         return null;
     }
 
@@ -80,7 +82,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findProductByDescription(String... description) {
-        List<Product> resultList = new ArrayList<>();
+        // TODO: 17.07.2021 Rewrite this method
+        /*List<Product> resultList = new ArrayList<>();
         for (Product product : getAllProduct()) {
             Boolean equalsDescription = true;
             for (String descr : description)
@@ -89,7 +92,8 @@ public class ProductServiceImpl implements ProductService {
                 }
             if (equalsDescription) resultList.add(product);
         }
-        return resultList;
+        return resultList;*/
+        return null;
     }
 
     @Override
@@ -108,7 +112,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product addNewProduct(String name, Set<String> description, Set<Category> categories) {
-        Product product = new Product(name, description, categories);
-        return productRepository.addProduct(product);
+        // TODO: 17.07.2021 Rewrite this method
+        /*Product product = new Product(name, description, categories);
+        return productRepository.addProduct(product);*/
+        return null;
     }
 }

@@ -48,9 +48,10 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order addOrder(Order order) {
-        order.setId(idCount++);
+        // TODO: 17.07.2021 Rewrite this method
+        /*order.setId(idCount++);
         orders.add(order);
-        log.info("Add new order ->" + order);
+        log.info("Add new order ->" + order);*/
         return order;
     }
 

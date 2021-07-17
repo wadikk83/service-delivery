@@ -23,15 +23,20 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(User user, List<OrderItem> listItems) {
-        Order order = new Order(user, listItems);
-        return orderRepository.addOrder(order);
+        //// TODO: 17.07.2021 Rewrite this method
+        /*Order order = new Order(user, listItems);
+        return orderRepository.addOrder(order);*/
+        return null;
     }
 
     @Override
     public Order addProductToOrderById(Integer id, Shop shop, Product product, Integer amount) {
-        Order ord = orderRepository.findById(id);
+        // TODO: 17.07.2021 Rewrite this method
+
+        /*Order ord = orderRepository.findById(id);
         OrderItem orderItem = new OrderItem(product, amount, shop);
         ord.getItems().add(orderItem);
-        return ord;
+        return ord;*/
+        return null;
     }
 }

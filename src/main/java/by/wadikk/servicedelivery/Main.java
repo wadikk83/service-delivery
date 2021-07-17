@@ -21,8 +21,8 @@ public class Main {
         System.out.println("Preparing data");
 
         Runner runner = new Runner();
-        runner.dataPreparation();
-        runner.run();
+        //runner.dataPreparation();
+        //runner.run();
 
         log.info("Application is finished at " +
                 new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));

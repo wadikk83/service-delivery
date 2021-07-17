@@ -11,13 +11,8 @@ public class Product {
     private Integer id;
     private String name;
 
-    private Set<String> description;
-
     private Set<Category> categories;
 
-    public Product(String name, Set<String> description, Set<Category> categories) {
-        this.name = name;
-        this.description = description;
-        this.categories = categories;
-    }
+    private List<ProductAttribute> productAttributes = null;
+
 }

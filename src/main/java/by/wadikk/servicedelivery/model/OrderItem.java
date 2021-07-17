@@ -9,11 +9,12 @@ public class OrderItem {
 
     private Product product;
     private int amount;
+    private double productPrice;
     private Shop shop;
 
 
-    public int getItemPrice() {
-        return shop.getAmountAndPrice().get(product).getPrice() * amount;
+    public double getItemPrice() {
+        return productPrice * amount;
     }
 
 

@@ -2,16 +2,12 @@ package by.wadikk.servicedelivery.service.impl;
 
 import by.wadikk.servicedelivery.model.Product;
 import by.wadikk.servicedelivery.model.Shop;
-import by.wadikk.servicedelivery.model.WrapperForAmountPrice;
 import by.wadikk.servicedelivery.repository.ShopRepository;
 import by.wadikk.servicedelivery.repository.impl.ShopRepositoryImpl;
 import by.wadikk.servicedelivery.service.ShopService;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class ShopServiceImpl implements ShopService {
@@ -48,28 +44,30 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Boolean editProductPriceAndAmountByShopId(Integer id, Product product, Integer amount, Integer price) {
-        Shop shop = shopRepository.findById(id);
+        // TODO: 17.07.2021 Rewrite this method
+        /*Shop shop = shopRepository.findById(id);
         if (shop == null) {
             log.info("Shop with id " + id + " not found");
             return false;
         }
 
         shop.getAmountAndPrice().put(product, new WrapperForAmountPrice(amount, price));
-        log.info("Edit product price with product id-> ", product.getId());
+        log.info("Edit product price with product id-> ", product.getId());*/
         return true;
     }
 
     @Override
     public Shop createShop(String name, String description) {
-        Shop shop = new Shop(name, description);
-        return shopRepository.addShop(shop);
-
+        // TODO: 17.07.2021 Rewrite this method
+        /*Shop shop = new Shop(name, description);
+        return shopRepository.addShop(shop);*/
+        return null;
     }
 
     @Override
     public Shop sortedProductByPrice(Integer id) {
         Shop shop = shopRepository.findById(id);
-        Map<Product, WrapperForAmountPrice> mapToSort = shop.getAmountAndPrice();
+        //Map<Product, WrapperForAmountPrice> mapToSort = shop.getAmountAndPrice();
 
         /*mapToSort.entrySet().stream()
                 .sorted(Comparator.<Map.Entry<Product, WrapperForAmountPrice>, Integer>
