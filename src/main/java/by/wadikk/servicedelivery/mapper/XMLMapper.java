@@ -1,9 +1,7 @@
 package by.wadikk.servicedelivery.mapper;
 
+import by.wadikk.servicedelivery.dao.XMLUserDao;
 import by.wadikk.servicedelivery.model.User;
-import by.wadikk.servicedelivery.repository.UserRepository;
-import by.wadikk.servicedelivery.repository.impl.UserRepositoryImpl;
-import by.wadikk.servicedelivery.service.impl.UserServiceImpl;
 import by.wadikk.servicedelivery.util.MapperFilename;
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,7 +9,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.File;
-import java.io.StringWriter;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,11 +18,11 @@ public class XMLMapper extends Mapper {
     @Override
     public Boolean parse(Class clazz, Collection list, String filename) {
 
-        List<User> list1 = (List<User>) list;
+        XMLUserDao listUser = new XMLUserDao();
+        listUser.setUsers((List<User>) list);
 
         try {
-
-            JAXBContext jaxbContext = JAXBContext.newInstance(UserRepositoryImpl.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(XMLUserDao.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             String pathTo = new MapperFilename().getFilename();
@@ -33,9 +30,9 @@ public class XMLMapper extends Mapper {
                 log.error("Path to save is null");
                 return false;
             }
-            //marshaller.marshal(list1, new File(pathTo + filename + ".xml"));
-            marshaller.marshal(list1, System.out);
-            //marshaller.marshal(list1.get(0), System.out);
+            marshaller.marshal(listUser, new File(pathTo + filename + ".xml"));
+            //marshaller.marshal(listUser, System.out);
+            //marshaller.marshal(daoList, System.out);
             log.info("Parse collection to XML to file " + pathTo + filename + ".xml");
             System.out.println("Parse collection to XML to file " + pathTo + filename + ".xml");
             return true;

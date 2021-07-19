@@ -9,13 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@XmlRootElement(name = "users111")
-
 public class UserRepositoryImpl implements UserRepository {
 
     private static UserRepository userRepository;
 
-    @XmlElement
     private List<User> users = new ArrayList<User>();
 
     private static Integer idCount = 1;

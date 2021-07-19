@@ -3,6 +3,7 @@ package by.wadikk.servicedelivery.util;
 
 import by.wadikk.servicedelivery.mapper.Mapper;
 import by.wadikk.servicedelivery.mapper.MapperFactory;
+import by.wadikk.servicedelivery.mapper.UnmarshalFromFile;
 import by.wadikk.servicedelivery.model.User;
 import by.wadikk.servicedelivery.repository.impl.UserRepositoryImpl;
 import by.wadikk.servicedelivery.service.*;
@@ -29,8 +30,14 @@ public class Runner {
         MapperFactory factory = new MapperFactory();
         Mapper jsonMapper = factory.createMapper("JSON");
         Mapper xmlMapper = factory.createMapper("XML");
-        jsonMapper.parse(User.class, userService.getAllUsers(), "Json_user");
-        xmlMapper.parse(UserRepositoryImpl.class, userService.getAllUsers(), "xml_user");
+        //jsonMapper.parse(User.class, userService.getAllUsers(), "Json_user");
+        //xmlMapper.parse(User.class, userService.getAllUsers(), "xml_user");
+
+        //UnmarshalFromFile.unmarshalJSONFile("D:/111/Json_user.json");
+        //UnmarshalFromFile.unmarshalJSONFile("D:/111/xml_user.json");
+        //UnmarshalFromFile.unmarshalXMLFile("D:/111/xml_user.xml");
+
+        UnmarshalFromFile.unmarshalFromFile("D:/111/xml_user.xml");
 
         System.out.println("==========================================================================");
         /*System.out.println("Edit/delete user interface");
