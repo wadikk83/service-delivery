@@ -5,13 +5,17 @@ import by.wadikk.servicedelivery.repository.UserRepository;
 import by.wadikk.servicedelivery.repository.impl.UserRepositoryImpl;
 import by.wadikk.servicedelivery.service.UserService;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+//@XmlRootElement(name = "users")
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository = new UserRepositoryImpl().getService();
 
     @Override
+    //@XmlElement(name = "user")
     public List<User> getAllUsers() {
         return userRepository.getAll();
     }

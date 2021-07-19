@@ -4,14 +4,18 @@ import by.wadikk.servicedelivery.model.User;
 import by.wadikk.servicedelivery.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@XmlRootElement(name = "users111")
+
 public class UserRepositoryImpl implements UserRepository {
 
     private static UserRepository userRepository;
 
+    @XmlElement
     private List<User> users = new ArrayList<User>();
 
     private static Integer idCount = 1;
@@ -82,4 +86,6 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> getAll() {
         return users;
     }
+
+
 }

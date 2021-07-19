@@ -4,8 +4,7 @@ package by.wadikk.servicedelivery;
 import by.wadikk.servicedelivery.util.Runner;
 import lombok.extern.slf4j.Slf4j;
 
-
-import java.io.IOException;
+import javax.xml.bind.JAXBException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -13,7 +12,7 @@ import java.util.Calendar;
 @Slf4j
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, JAXBException {
         log.info("==========================================================================");
         log.info("Application is started at " +
                 new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));
@@ -21,8 +20,8 @@ public class Main {
         System.out.println("Preparing data");
 
         Runner runner = new Runner();
-        //runner.dataPreparation();
-        //runner.run();
+        runner.dataPreparation();
+        runner.run();
 
         log.info("Application is finished at " +
                 new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));

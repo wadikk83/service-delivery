@@ -1,14 +1,14 @@
 package by.wadikk.servicedelivery.util;
 
 
-import by.wadikk.servicedelivery.model.Category;
-import by.wadikk.servicedelivery.model.Order;
-import by.wadikk.servicedelivery.model.OrderItem;
+import by.wadikk.servicedelivery.mapper.Mapper;
+import by.wadikk.servicedelivery.mapper.MapperFactory;
+import by.wadikk.servicedelivery.model.User;
+import by.wadikk.servicedelivery.repository.impl.UserRepositoryImpl;
 import by.wadikk.servicedelivery.service.*;
 import by.wadikk.servicedelivery.service.impl.*;
 
-import java.io.IOException;
-import java.util.*;
+import javax.xml.bind.JAXBException;
 
 public class Runner {
 
@@ -18,16 +18,22 @@ public class Runner {
     ShopService shopService = new ShopServiceImpl();
     OrderService orderService = new OrderServiceImpl();
 
-    public void run() throws IOException {
+    public void run() throws InstantiationException, IllegalAccessException, JAXBException {
 
-        JsonUtil jsonUtil = new JsonUtil();
+   /*     JsonUtil jsonUtil = new JsonUtil();
 
         jsonUtil.parseJsonListToFile(shopService.getAllShops(), "Json shop");
         jsonUtil.parseJsonListToFile(productService.getAllProduct(), "Json product");
-        jsonUtil.parseJsonListToFile(userService.getAllUsers(), "Json user");
+        jsonUtil.parseJsonListToFile(userService.getAllUsers(), "Json user");*/
+
+        MapperFactory factory = new MapperFactory();
+        Mapper jsonMapper = factory.createMapper("JSON");
+        Mapper xmlMapper = factory.createMapper("XML");
+        jsonMapper.parse(User.class, userService.getAllUsers(), "Json_user");
+        xmlMapper.parse(UserRepositoryImpl.class, userService.getAllUsers(), "xml_user");
 
         System.out.println("==========================================================================");
-        System.out.println("Edit/delete user interface");
+        /*System.out.println("Edit/delete user interface");
         System.out.println("All list users");
         System.out.println(userService.getAllUsers());
         System.out.println("Detele user with id = 3");
@@ -64,7 +70,7 @@ public class Runner {
         System.out.println("All orders");
         System.out.println(orderService.getAllOrders());
         System.out.println("Add order");
-        Order testOrder = orderService.createOrder(userService.getByLogin("admin"), new ArrayList<OrderItem>());
+        Order testOrder = orderService.createOrder(userService.getByLogin("admin"), new ArrayList<OrderItem>());*/
         /*testOrder = orderService.addProductToOrderById(testOrder.getId(), shopService.getById(1),
                 productService.getById(1), 10);
 
@@ -102,7 +108,7 @@ public class Runner {
         categoryService.printTree();
 
 
-        Set<String> product1Description = new HashSet<>();
+        /*Set<String> product1Description = new HashSet<>();
         product1Description.add("Prod1-dsc1");
         product1Description.add("Prod1-dsc2");
         product1Description.add("Prod1-dsc3");
@@ -112,23 +118,6 @@ public class Runner {
         productService.addNewProduct("Product1", product1Description, product1Category);
         System.out.println("Create new product -> " + productService.getByName("Product1").toString());
 
-        Set<String> product2Description = new HashSet<>();
-        product2Description.add("Prod2-dsc1");
-        product2Description.add("Prod2-dsc2");
-        product2Description.add("Prod2-dsc3");
-        Set<Category> product2Category = new HashSet<>();
-        product2Category.add(categoryService.getCategoryByName("Root"));
-        productService.addNewProduct("Product2", product2Description, product2Category);
-        System.out.println("Create new product -> " + productService.getByName("Product2").toString());
-
-        Set<String> product3Description = new HashSet<>();
-        product3Description.add("Prod3-dsc1");
-        product3Description.add("Prod3-dsc2");
-        product3Description.add("Prod3-dsc3");
-        Set<Category> product3Category = new HashSet<>();
-        product3Category.add(categoryService.getCategoryByName("Root"));
-        productService.addNewProduct("Product3", product3Description, product3Category);
-        System.out.println("Create new product -> " + productService.getByName("Product3").toString());
 
 
         shopService.createShop("Shop1", "My super shop 1");
@@ -140,8 +129,8 @@ public class Runner {
         shopService.editProductPriceAndAmountByShopId(2, productService.getById(1), 15, 15);
         shopService.editProductPriceAndAmountByShopId(2, productService.getById(2), 20, 20);
         System.out.println("Create new shop -> " + shopService.getByName("Shop2").toString());
+*/
 
-        //shopService.sortedProductByPrice(1);
     }
 
 }
