@@ -4,12 +4,16 @@ import by.wadikk.servicedelivery.model.*;
 import by.wadikk.servicedelivery.repository.OrderRepository;
 import by.wadikk.servicedelivery.repository.impl.OrderRepositoryImpl;
 import by.wadikk.servicedelivery.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 
-    private OrderRepository orderRepository = new OrderRepositoryImpl().getService();
+    @Autowired
+    private OrderRepository orderRepository;
 
     @Override
     public List<Order> getAllOrders() {

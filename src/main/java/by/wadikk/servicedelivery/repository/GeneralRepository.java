@@ -3,6 +3,7 @@ package by.wadikk.servicedelivery.repository;
 
 import java.util.List;
 
+
 public interface GeneralRepository<T, ID> {
 
     T findById(ID id);

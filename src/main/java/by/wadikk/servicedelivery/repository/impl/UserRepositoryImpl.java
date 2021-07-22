@@ -3,30 +3,31 @@ package by.wadikk.servicedelivery.repository.impl;
 import by.wadikk.servicedelivery.model.User;
 import by.wadikk.servicedelivery.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Repository;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@Repository
 public class UserRepositoryImpl implements UserRepository {
 
-    private static UserRepository userRepository;
+    //private static UserRepository userRepository;
 
     private List<User> users = new ArrayList<User>();
 
     private static Integer idCount = 1;
 
-    public UserRepositoryImpl() {
-    }
+
 
     //singleton
-    public static UserRepository getService() {
+    /*public static UserRepository getService() {
         if (userRepository == null) {
             userRepository = new UserRepositoryImpl();
         }
         return userRepository;
-    }
+    }*/
 
 
     @Override

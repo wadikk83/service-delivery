@@ -2,9 +2,11 @@ package by.wadikk.servicedelivery.mapper;
 
 
 import org.reflections.Reflections;
+import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
+@Component
 public class MapperFactory {
     public Mapper createMapper(String action) throws IllegalAccessException, InstantiationException {
         Mapper mapper = null;

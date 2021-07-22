@@ -5,16 +5,18 @@ import by.wadikk.servicedelivery.model.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.docx4j.jaxb.JaxbValidationEventHandler;
-import org.docx4j.vml.root.Xml;
+import org.springframework.stereotype.Component;
 
-import javax.xml.bind.*;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
 @Slf4j
+@Component
 public class UnmarshalFromFile {
 
     public static List<User> unmarshalFromFile(String pathname) {

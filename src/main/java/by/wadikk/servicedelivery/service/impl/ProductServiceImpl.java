@@ -6,15 +6,19 @@ import by.wadikk.servicedelivery.repository.ProductRepository;
 import by.wadikk.servicedelivery.repository.impl.ProductRepositoryImpl;
 import by.wadikk.servicedelivery.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 @Slf4j
+@Service
 public class ProductServiceImpl implements ProductService {
 
-    private ProductRepository productRepository = new ProductRepositoryImpl().getService();
+    @Autowired
+    private ProductRepository productRepository;
 
     @Override
     public List<Product> getAllProduct() {

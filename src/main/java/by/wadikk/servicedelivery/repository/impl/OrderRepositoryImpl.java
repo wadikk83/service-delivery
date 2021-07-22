@@ -5,11 +5,13 @@ import by.wadikk.servicedelivery.model.User;
 import by.wadikk.servicedelivery.repository.OrderRepository;
 import by.wadikk.servicedelivery.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@Repository
 public class OrderRepositoryImpl implements OrderRepository {
 
     private static OrderRepository orderRepository;

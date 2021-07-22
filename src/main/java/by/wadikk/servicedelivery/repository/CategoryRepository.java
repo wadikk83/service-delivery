@@ -4,6 +4,7 @@ import by.wadikk.servicedelivery.model.Category;
 
 import java.util.List;
 
+
 public interface CategoryRepository {
 
     Category findById(Integer id);

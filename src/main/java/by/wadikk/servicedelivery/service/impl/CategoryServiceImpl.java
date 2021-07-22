@@ -4,12 +4,16 @@ import by.wadikk.servicedelivery.model.Category;
 import by.wadikk.servicedelivery.repository.CategoryRepository;
 import by.wadikk.servicedelivery.repository.impl.CategoryRepositoryImpl;
 import by.wadikk.servicedelivery.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
-    private CategoryRepository categoryRepository = new CategoryRepositoryImpl().getService();
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public Category getRootCategory() {

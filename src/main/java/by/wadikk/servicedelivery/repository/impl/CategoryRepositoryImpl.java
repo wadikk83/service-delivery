@@ -3,11 +3,13 @@ package by.wadikk.servicedelivery.repository.impl;
 import by.wadikk.servicedelivery.model.Category;
 import by.wadikk.servicedelivery.repository.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@Repository
 public class CategoryRepositoryImpl implements CategoryRepository {
 
     private static CategoryRepository categoryRepository;

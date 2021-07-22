@@ -5,29 +5,39 @@ import by.wadikk.servicedelivery.mapper.Mapper;
 import by.wadikk.servicedelivery.mapper.MapperFactory;
 import by.wadikk.servicedelivery.mapper.UnmarshalFromFile;
 import by.wadikk.servicedelivery.model.User;
-import by.wadikk.servicedelivery.repository.impl.UserRepositoryImpl;
 import by.wadikk.servicedelivery.service.*;
-import by.wadikk.servicedelivery.service.impl.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import javax.xml.bind.JAXBException;
 
-public class Runner {
 
-    UserService userService = new UserServiceImpl();
-    CategoryService categoryService = new CategoryServiceImpl();
-    ProductService productService = new ProductServiceImpl();
-    ShopService shopService = new ShopServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+@Component
+public class Runner implements CommandLineRunner {
 
-    public void run() throws InstantiationException, IllegalAccessException, JAXBException {
+    @Autowired
+    private UserService userService;
 
-   /*     JsonUtil jsonUtil = new JsonUtil();
+    @Autowired
+    private CategoryService categoryService;
 
-        jsonUtil.parseJsonListToFile(shopService.getAllShops(), "Json shop");
-        jsonUtil.parseJsonListToFile(productService.getAllProduct(), "Json product");
-        jsonUtil.parseJsonListToFile(userService.getAllUsers(), "Json user");*/
+    @Autowired
+    private ProductService productService;
 
-        MapperFactory factory = new MapperFactory();
+    @Autowired
+    private ShopService shopService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private MapperFactory factory;
+
+
+    public void runOld() throws InstantiationException, IllegalAccessException, JAXBException {
+
+        //MapperFactory factory = new MapperFactory();
         Mapper jsonMapper = factory.createMapper("JSON");
         Mapper xmlMapper = factory.createMapper("XML");
         //jsonMapper.parse(User.class, userService.getAllUsers(), "Json_user");
@@ -92,7 +102,7 @@ public class Runner {
         userService.addNewUser("admin", "admin", "admin");
 
 
-        System.out.println("Create new user with login->user1, password->user1, first name-> user1");
+        /*System.out.println("Create new user with login->user1, password->user1, first name-> user1");
         userService.addNewUser("user1", "user1", "user1");
 
         System.out.println("Create new user with login->user2, password->user2, first name-> user2");
@@ -112,7 +122,7 @@ public class Runner {
         categoryService.addNewCategory("Child 4 (under Child 3)", "Child 3 (under Child 2)");
 
         System.out.println("Print tree categories");
-        categoryService.printTree();
+        categoryService.printTree();*/
 
 
         /*Set<String> product1Description = new HashSet<>();
@@ -140,4 +150,22 @@ public class Runner {
 
     }
 
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("Create new user with login->admin, password->admin, first name-> admin");
+        userService.addNewUser("admin", "admin", "admin");
+
+        System.out.println("Create new user with login->user1, password->user1, first name-> user1");
+        userService.addNewUser("user1", "user1", "user1");
+
+        System.out.println("Create new user with login->user2, password->user2, first name-> user2");
+        userService.addNewUser("user2", "user2", "user2");
+
+        Mapper jsonMapper = factory.createMapper("JSON");
+        Mapper xmlMapper = factory.createMapper("XML");
+
+        jsonMapper.parse(User.class, userService.getAllUsers(), "Json_user");
+        xmlMapper.parse(User.class, userService.getAllUsers(), "xml_user");
+
+    }
 }

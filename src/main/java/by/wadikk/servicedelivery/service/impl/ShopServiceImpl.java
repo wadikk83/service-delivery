@@ -6,13 +6,17 @@ import by.wadikk.servicedelivery.repository.ShopRepository;
 import by.wadikk.servicedelivery.repository.impl.ShopRepositoryImpl;
 import by.wadikk.servicedelivery.service.ShopService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Slf4j
+@Service
 public class ShopServiceImpl implements ShopService {
 
-    private ShopRepository shopRepository = new ShopRepositoryImpl().getService();
+    @Autowired
+    private ShopRepository shopRepository;
 
     @Override
     public List<Shop> getAllShops() {

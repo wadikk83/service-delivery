@@ -2,7 +2,6 @@ package by.wadikk.servicedelivery.repository;
 
 import by.wadikk.servicedelivery.model.User;
 
-import java.util.*;
 
 public interface UserRepository extends GeneralRepository<User, Integer>{
 

@@ -2,20 +2,19 @@ package by.wadikk.servicedelivery.service.impl;
 
 import by.wadikk.servicedelivery.model.User;
 import by.wadikk.servicedelivery.repository.UserRepository;
-import by.wadikk.servicedelivery.repository.impl.UserRepositoryImpl;
 import by.wadikk.servicedelivery.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
-//@XmlRootElement(name = "users")
+@Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository = new UserRepositoryImpl().getService();
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
-    //@XmlElement(name = "user")
     public List<User> getAllUsers() {
         return userRepository.getAll();
     }
